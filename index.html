@@ -1,0 +1,247 @@
+<div id="lll-timeline">
+  <style>
+    #lll-timeline {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 1000px;
+      height: 600px; /* Aumentei a altura para acomodar melhor os marcos */
+      margin: 0 auto;
+      background: #f8f9fb;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto; /* Adicionei uma terceira linha para os marcos */
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .timeline-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(90deg, #6366F1, #A855F7, #EC4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .timeline-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      height: 100%;
+    }
+    
+    .period {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    
+    .period-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .period-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .period-icon svg {
+      width: 35px;
+      height: 35px;
+      fill: white;
+    }
+    
+    .period-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      text-align: center;
+      color: #333;
+    }
+    
+    .period-year {
+      background: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #555;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+    
+    .feature {
+      background: white;
+      padding: 14px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      font-size: 14px;
+      line-height: 1.4;
+      color: #444;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .feature::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* Nova seção para marcos históricos */
+    .timeline-milestones {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    
+    .milestone {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      color: #444;
+    }
+    
+    /* Estilos específicos por período */
+    .period-1 .period-icon {
+      background: linear-gradient(135deg, #6366F1, #818CF8);
+    }
+    
+    .period-1 .feature::before {
+      background: linear-gradient(135deg, #6366F1, #818CF8);
+    }
+    
+    .period-2 .period-icon {
+      background: linear-gradient(135deg, #8B5CF6, #A855F7);
+    }
+    
+    .period-2 .feature::before {
+      background: linear-gradient(135deg, #8B5CF6, #A855F7);
+    }
+    
+    .period-3 .period-icon {
+      background: linear-gradient(135deg, #EC4899, #F472B6);
+    }
+    
+    .period-3 .feature::before {
+      background: linear-gradient(135deg, #EC4899, #F472B6);
+    }
+    
+    .milestone-1 {
+      border-left: 4px solid #6366F1;
+    }
+    
+    .milestone-2 {
+      border-left: 4px solid #A855F7;
+    }
+    
+    .milestone-3 {
+      border-left: 4px solid #EC4899;
+    }
+  </style>
+  
+  <div class="timeline-header">
+    <h1 class="timeline-title">Evolução Histórica do Life Long Learning</h1>
+  </div>
+  
+  <div class="timeline-content">
+    <!-- Período 1: Educação e Treinamento -->
+    <div class="period period-1">
+      <div class="period-header">
+        <div class="period-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+          </svg>
+        </div>
+        <h3 class="period-title">Educação e Treinamento</h3>
+        <div class="period-year">Século XX</div>
+      </div>
+      
+      <div class="features">
+        <div class="feature">Foco em qualificação para o mercado de trabalho</div>
+        <div class="feature">Centralidade da escola/universidade como espaço de aprendizagem</div>
+        <div class="feature">Educação vista como etapa específica da vida</div>
+        <div class="feature">Estruturas formais e hierárquicas de ensino</div>
+      </div>
+    </div>
+    
+    <!-- Período 2: Lifelong Learning -->
+    <div class="period period-2">
+      <div class="period-header">
+        <div class="period-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12,5A3.5,3.5 0 0,0 8.5,8.5A3.5,3.5 0 0,0 12,12A3.5,3.5 0 0,0 15.5,8.5A3.5,3.5 0 0,0 12,5M12,7A1.5,1.5 0 0,1 13.5,8.5A1.5,1.5 0 0,1 12,10A1.5,1.5 0 0,1 10.5,8.5A1.5,1.5 0 0,1 12,7M5.5,8A2.5,2.5 0 0,0 3,10.5C3,11.44 3.53,12.25 4.29,12.68C4.65,12.88 5.06,13 5.5,13C5.94,13 6.35,12.88 6.71,12.68C7.08,12.47 7.39,12.17 7.62,11.81C6.89,10.86 6.5,9.7 6.5,8.5C6.5,8.41 6.5,8.31 6.5,8.22C6.2,8.08 5.86,8 5.5,8M18.5,8C18.14,8 17.8,8.08 17.5,8.22C17.5,8.31 17.5,8.41 17.5,8.5C17.5,9.7 17.11,10.86 16.38,11.81C16.5,12 16.63,12.15 16.78,12.3C16.94,12.45 17.1,12.58 17.29,12.68C17.65,12.88 18.06,13 18.5,13C18.94,13 19.35,12.88 19.71,12.68C20.47,12.25 21,11.44 21,10.5A2.5,2.5 0 0,0 18.5,8M12,14C9.66,14 5,15.17 5,17.5V19H19V17.5C19,15.17 14.34,14 12,14M4.71,14.55C2.78,14.78 0,15.76 0,17.5V19H3V17.07C3,16.06 3.69,15.22 4.71,14.55M19.29,14.55C20.31,15.22 21,16.06 21,17.07V19H24V17.5C24,15.76 21.22,14.78 19.29,14.55M12,16C13.53,16 15.24,16.5 16.23,17H7.77C8.76,16.5 10.47,16 12,16Z"/>
+          </svg>
+        </div>
+        <h3 class="period-title">Lifelong Learning</h3>
+        <div class="period-year">Início do Século XXI</div>
+      </div>
+      
+      <div class="features">
+        <div class="feature">Ampliação dos espaços de aprendizagem (formal, não-formal, informal)</div>
+        <div class="feature">Reconhecimento da continuidade da aprendizagem por toda a vida</div>
+        <div class="feature">Foco no desenvolvimento de competências adaptativas</div>
+        <div class="feature">Valorização da autonomia do aprendiz</div>
+      </div>
+    </div>
+    
+    <!-- Período 3: Ação pela Mudança -->
+    <div class="period period-3">
+      <div class="period-header">
+        <div class="period-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21,10.12H14.22L16.96,7.3C14.23,4.6 9.81,4.5 7.08,7.2C4.35,9.91 4.35,14.28 7.08,17C9.81,19.7 14.23,19.7 16.96,17C18.32,15.65 19,14.08 19,12.1H21C21,14.08 20.12,16.65 18.36,18.39C14.85,21.87 9.15,21.87 5.64,18.39C2.14,14.92 2.11,9.28 5.62,5.81C9.13,2.34 14.76,2.34 18.27,5.81L21,3V10.12M12.5,8V12.25L16,14.33L15.28,15.54L11,13V8H12.5Z"/>
+          </svg>
+        </div>
+        <h3 class="period-title">Ação pela Mudança</h3>
+        <div class="period-year">Atualidade</div>
+      </div>
+      
+      <div class="features">
+        <div class="feature">Competências para sociedade sustentável e digital</div>
+        <div class="feature">Aprendizagem como agente de transformação social</div>
+        <div class="feature">Integração de tecnologias e metodologias ativas</div>
+        <div class="feature">Comunidades de aprendizagem colaborativas e em rede</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Seção separada para os marcos históricos -->
+  <div class="timeline-milestones">
+    <div class="milestone milestone-1">1972: UNESCO - "Learning to Be"</div>
+    <div class="milestone milestone-2">2000: Memorando sobre Aprendizagem ao Longo da Vida (UE)</div>
+    <div class="milestone milestone-3">2020: UNESCO - "Reimaginar nossos futuros juntos"</div>
+  </div>
+</div>
