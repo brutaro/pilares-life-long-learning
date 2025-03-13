@@ -1,247 +1,232 @@
-<div id="lll-timeline">
+<div id="lifelong-learning-infographic">
   <style>
-    #lll-timeline {
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      max-width: 1000px;
-      height: 600px; /* Aumentei a altura para acomodar melhor os marcos */
+    #lifelong-learning-infographic {
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
       margin: 0 auto;
-      background: #f8f9fb;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      overflow: hidden;
-      display: grid;
-      grid-template-rows: auto 1fr auto; /* Adicionei uma terceira linha para os marcos */
-      padding: 24px;
-      box-sizing: border-box;
+      color: #333;
     }
-    
-    .timeline-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .timeline-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin: 0;
-      background: linear-gradient(90deg, #6366F1, #A855F7, #EC4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .timeline-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      height: 100%;
-    }
-    
-    .period {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .infographic-container {
       position: relative;
+      width: 100%;
+      height: 680px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #f0f0f0, #ffffff);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
-    
-    .period-header {
+    .center-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 180px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .center-circle h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+    .quadrant {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
+    }
+    .quadrant:hover {
+      transform: scale(1.02);
+    }
+    .quadrant-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 12px;
+      justify-content: center;
+      height: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
-    
-    .period-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
+    .quadrant h3 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: white;
+    }
+    .quadrant p {
+      margin: 10px 0;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+      color: white;
+    }
+    .icon-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 10px 0;
+      height: 70px;
     }
+    .top-left {
+      top: 20px;
+      left: 20px;
+    }
+    .top-right {
+      top: 20px;
+      right: 20px;
+    }
+    .bottom-left {
+      bottom: 20px;
+      left: 20px;
+    }
+    .bottom-right {
+      bottom: 20px;
+      right: 20px;
+    }
+    .q1 { background: linear-gradient(135deg, #5D26C1, #a17fe0); }
+    .q2 { background: linear-gradient(135deg, #00b09b, #96c93d); }
+    .q3 { background: linear-gradient(135deg, #FF8008, #FFC837); }
+    .q4 { background: linear-gradient(135deg, #ED213A, #f87e7b); }
     
-    .period-icon svg {
+    .icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      margin: 0 5px;
+    }
+    .icon svg {
       width: 35px;
       height: 35px;
       fill: white;
     }
-    
-    .period-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 4px 0;
-      text-align: center;
-      color: #333;
-    }
-    
-    .period-year {
-      background: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      color: #555;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    
-    .features {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-      padding: 0 8px;
-      box-sizing: border-box;
-    }
-    
-    .feature {
-      background: white;
-      padding: 14px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      font-size: 14px;
-      line-height: 1.4;
-      color: #444;
-      position: relative;
-      padding-left: 20px;
-    }
-    
-    .feature::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 100%;
-      border-radius: 3px 0 0 3px;
-    }
-    
-    /* Nova seção para marcos históricos */
-    .timeline-milestones {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-top: 20px;
-    }
-    
-    .milestone {
-      background: white;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      color: #444;
-    }
-    
-    /* Estilos específicos por período */
-    .period-1 .period-icon {
-      background: linear-gradient(135deg, #6366F1, #818CF8);
-    }
-    
-    .period-1 .feature::before {
-      background: linear-gradient(135deg, #6366F1, #818CF8);
-    }
-    
-    .period-2 .period-icon {
-      background: linear-gradient(135deg, #8B5CF6, #A855F7);
-    }
-    
-    .period-2 .feature::before {
-      background: linear-gradient(135deg, #8B5CF6, #A855F7);
-    }
-    
-    .period-3 .period-icon {
-      background: linear-gradient(135deg, #EC4899, #F472B6);
-    }
-    
-    .period-3 .feature::before {
-      background: linear-gradient(135deg, #EC4899, #F472B6);
-    }
-    
-    .milestone-1 {
-      border-left: 4px solid #6366F1;
-    }
-    
-    .milestone-2 {
-      border-left: 4px solid #A855F7;
-    }
-    
-    .milestone-3 {
-      border-left: 4px solid #EC4899;
-    }
   </style>
   
-  <div class="timeline-header">
-    <h1 class="timeline-title">Evolução Histórica do Life Long Learning</h1>
-  </div>
-  
-  <div class="timeline-content">
-    <!-- Período 1: Educação e Treinamento -->
-    <div class="period period-1">
-      <div class="period-header">
-        <div class="period-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
-          </svg>
+  <div class="infographic-container">
+    <div class="center-circle">
+      <h2>LIFE LONG<br>LEARNING</h2>
+    </div>
+    
+    <!-- Quadrante 1: Aprender a conhecer -->
+    <div class="quadrant top-left">
+      <div class="quadrant-content q1">
+        <h3>Aprender a conhecer</h3>
+        <div class="icon-container">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21,5c-1.11-0.35-2.33-0.5-3.5-0.5c-1.95,0-4.05,0.4-5.5,1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45,4.9,1,6v14.65c0,0.25,0.25,0.5,0.5,0.5c0.1,0,0.15-0.05,0.25-0.05C3.1,20.45,5.05,20,6.5,20c1.95,0,4.05,0.4,5.5,1.5c1.35-0.85,3.8-1.5,5.5-1.5c1.65,0,3.35,0.3,4.75,1.05c0.1,0.05,0.15,0.05,0.25,0.05c0.25,0,0.5-0.25,0.5-0.5V6C22.4,5.55,21.75,5.25,21,5z M21,18.5c-1.1-0.35-2.3-0.5-3.5-0.5c-1.7,0-4.15,0.65-5.5,1.5V8c1.35-0.85,3.8-1.5,5.5-1.5c1.2,0,2.4,0.15,3.5,0.5V18.5z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M13,5.3l1.35-0.95c1.82,0.56,3.37,1.76,4.38,3.34l-0.39,1.34l-1.35,0.46L13,6.7V5.3z M9.65,4.35L11,5.3v1.4L7.01,9.49L5.66,9.03L5.27,7.69C6.28,6.12,7.83,4.92,9.65,4.35z M7.08,17.11l-1.14,0.1C4.73,15.81,4,13.99,4,12c0-0.12,0.01-0.23,0.02-0.35l0.67-0.44l1.94-0.43l0.34,1.61L7.08,17.11z M14.5,19.59C13.71,19.85,12.87,20,12,20s-1.71-0.15-2.5-0.41l-0.69-1.49L9.45,17h5.11l0.64,1.11L14.5,19.59z M14.27,15H9.73l-1.35-4.91L12,8.44l3.63,1.65L14.27,15z M16.92,17.11l-0.89-4.72l0.34-1.61l1.94,0.43l0.67,0.44C19,11.77,19,11.88,19,12c0,1.99-0.73,3.81-1.94,5.21L16.92,17.11z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+            </svg>
+          </div>
         </div>
-        <h3 class="period-title">Educação e Treinamento</h3>
-        <div class="period-year">Século XX</div>
-      </div>
-      
-      <div class="features">
-        <div class="feature">Foco em qualificação para o mercado de trabalho</div>
-        <div class="feature">Centralidade da escola/universidade como espaço de aprendizagem</div>
-        <div class="feature">Educação vista como etapa específica da vida</div>
-        <div class="feature">Estruturas formais e hierárquicas de ensino</div>
+        <p>Desenvolvimento da capacidade de compreender, descobrir e construir conhecimento. Inclui aprender a aprender para beneficiar-se das oportunidades oferecidas pela educação continuada.</p>
       </div>
     </div>
     
-    <!-- Período 2: Lifelong Learning -->
-    <div class="period period-2">
-      <div class="period-header">
-        <div class="period-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12,5A3.5,3.5 0 0,0 8.5,8.5A3.5,3.5 0 0,0 12,12A3.5,3.5 0 0,0 15.5,8.5A3.5,3.5 0 0,0 12,5M12,7A1.5,1.5 0 0,1 13.5,8.5A1.5,1.5 0 0,1 12,10A1.5,1.5 0 0,1 10.5,8.5A1.5,1.5 0 0,1 12,7M5.5,8A2.5,2.5 0 0,0 3,10.5C3,11.44 3.53,12.25 4.29,12.68C4.65,12.88 5.06,13 5.5,13C5.94,13 6.35,12.88 6.71,12.68C7.08,12.47 7.39,12.17 7.62,11.81C6.89,10.86 6.5,9.7 6.5,8.5C6.5,8.41 6.5,8.31 6.5,8.22C6.2,8.08 5.86,8 5.5,8M18.5,8C18.14,8 17.8,8.08 17.5,8.22C17.5,8.31 17.5,8.41 17.5,8.5C17.5,9.7 17.11,10.86 16.38,11.81C16.5,12 16.63,12.15 16.78,12.3C16.94,12.45 17.1,12.58 17.29,12.68C17.65,12.88 18.06,13 18.5,13C18.94,13 19.35,12.88 19.71,12.68C20.47,12.25 21,11.44 21,10.5A2.5,2.5 0 0,0 18.5,8M12,14C9.66,14 5,15.17 5,17.5V19H19V17.5C19,15.17 14.34,14 12,14M4.71,14.55C2.78,14.78 0,15.76 0,17.5V19H3V17.07C3,16.06 3.69,15.22 4.71,14.55M19.29,14.55C20.31,15.22 21,16.06 21,17.07V19H24V17.5C24,15.76 21.22,14.78 19.29,14.55M12,16C13.53,16 15.24,16.5 16.23,17H7.77C8.76,16.5 10.47,16 12,16Z"/>
-          </svg>
+    <!-- Quadrante 2: Aprender a fazer -->
+    <div class="quadrant top-right">
+      <div class="quadrant-content q2">
+        <h3>Aprender a fazer</h3>
+        <div class="icon-container">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7,2V4H8V18A4,4 0 0,0 12,22A4,4 0 0,0 16,18V4H17V2H7M11,16C10.4,16 10,15.6 10,15C10,14.4 10.4,14 11,14C11.6,14 12,14.4 12,15C12,15.6 11.6,16 11,16M13,12C12.4,12 12,11.6 12,11C12,10.4 12.4,10 13,10C13.6,10 14,10.4 14,11C14,11.6 13.6,12 13,12M14,7H10V4H14V7Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z"/>
+            </svg>
+          </div>
         </div>
-        <h3 class="period-title">Lifelong Learning</h3>
-        <div class="period-year">Início do Século XXI</div>
-      </div>
-      
-      <div class="features">
-        <div class="feature">Ampliação dos espaços de aprendizagem (formal, não-formal, informal)</div>
-        <div class="feature">Reconhecimento da continuidade da aprendizagem por toda a vida</div>
-        <div class="feature">Foco no desenvolvimento de competências adaptativas</div>
-        <div class="feature">Valorização da autonomia do aprendiz</div>
+        <p>Aplicação prática do conhecimento e desenvolvimento de competências que preparam para o mundo do trabalho e situações diversas da vida cotidiana.</p>
       </div>
     </div>
     
-    <!-- Período 3: Ação pela Mudança -->
-    <div class="period period-3">
-      <div class="period-header">
-        <div class="period-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21,10.12H14.22L16.96,7.3C14.23,4.6 9.81,4.5 7.08,7.2C4.35,9.91 4.35,14.28 7.08,17C9.81,19.7 14.23,19.7 16.96,17C18.32,15.65 19,14.08 19,12.1H21C21,14.08 20.12,16.65 18.36,18.39C14.85,21.87 9.15,21.87 5.64,18.39C2.14,14.92 2.11,9.28 5.62,5.81C9.13,2.34 14.76,2.34 18.27,5.81L21,3V10.12M12.5,8V12.25L16,14.33L15.28,15.54L11,13V8H12.5Z"/>
-          </svg>
+    <!-- Quadrante 3: Aprender a conviver -->
+    <div class="quadrant bottom-left">
+      <div class="quadrant-content q3">
+        <h3>Aprender a conviver</h3>
+        <div class="icon-container">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,6.7C14.71,6.29 14.05,6.29 13.65,6.7L10.65,9.7L9.35,8.4C8.95,8 8.29,8 7.88,8.4L6.82,9.46C6.41,9.87 6.41,10.53 6.82,10.94L8.94,13.06L9.35,13.47C9.76,13.88 10.42,13.88 10.82,13.47L13.82,10.47L14.24,10.06L16.18,8.12C16.59,7.71 16.59,7.05 16.18,6.64V7.76Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18,22A2,2 0 0,0 20,20V4C20,2.89 19.1,2 18,2H12V9L9.5,7.5L7,9V2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18Z"/>
+            </svg>
+          </div>
         </div>
-        <h3 class="period-title">Ação pela Mudança</h3>
-        <div class="period-year">Atualidade</div>
-      </div>
-      
-      <div class="features">
-        <div class="feature">Competências para sociedade sustentável e digital</div>
-        <div class="feature">Aprendizagem como agente de transformação social</div>
-        <div class="feature">Integração de tecnologias e metodologias ativas</div>
-        <div class="feature">Comunidades de aprendizagem colaborativas e em rede</div>
+        <p>Desenvolvimento da compreensão do outro e da percepção das interdependências. Prepara para gerir conflitos e valorizar a diversidade humana em todos os contextos.</p>
       </div>
     </div>
-  </div>
-  
-  <!-- Seção separada para os marcos históricos -->
-  <div class="timeline-milestones">
-    <div class="milestone milestone-1">1972: UNESCO - "Learning to Be"</div>
-    <div class="milestone milestone-2">2000: Memorando sobre Aprendizagem ao Longo da Vida (UE)</div>
-    <div class="milestone milestone-3">2020: UNESCO - "Reimaginar nossos futuros juntos"</div>
+    
+    <!-- Quadrante 4: Aprender a ser -->
+    <div class="quadrant bottom-right">
+      <div class="quadrant-content q4">
+        <h3>Aprender a ser</h3>
+        <div class="icon-container">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.3V15.8C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
+            </svg>
+          </div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18,14H14V18H10V14H6V10H10V6H14V10H18M20,2H4A2,2 0 0,0 2,4V20A2,2 0 0,0 4,22H20A2,2 0 0,0 22,20V4C22,2.89 21.1,2 20,2Z"/>
+            </svg>
+          </div>
+        </div>
+        <p>Desenvolvimento integral da pessoa: inteligência, sensibilidade, responsabilidade pessoal e espiritualidade. Capacidade de autonomia, discernimento e responsabilidade social.</p>
+      </div>
+    </div>
   </div>
 </div>
